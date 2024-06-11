@@ -9,7 +9,7 @@ vn = VannaDefault(model='chinook', api_key=vanna.get_api_key('my-email@example.c
 
 vn.connect_to_sqlite('https://vanna.ai/Chinook.sqlite')
 
-my_question = st.session_state.get("my_question", default=None)
+'''my_question = st.session_state.get("my_question", default=None)
 if my_question is None:
     st.image("chinook-schema.png", use_column_width=True)
     my_question = st.text_input("Ask me a question that I can turn into SQL", key="my_question")
@@ -21,7 +21,7 @@ else:
     st.dataframe(df, use_container_width=True)
     fig = vn.get_plotly_figure(plotly_code=vn.generate_plotly_code(question=my_question, sql=sql, df=df), df=df)
     st.plotly_chart(fig, use_container_width=True)
-    st.button("Ask another question", on_click=lambda: st.session_state.clear())
+    st.button("Ask another question", on_click=lambda: st.session_state.clear())'''
 
-#from vanna.flask import VannaFlaskApp
-#VannaFlaskApp(vn).run()
+from vanna.flask import VannaFlaskApp
+VannaFlaskApp(vn).run()

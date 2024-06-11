@@ -1,8 +1,12 @@
 import vanna as vn
 import streamlit as st
+from vanna.remote import VannaDefault
 
-vn.set_api_key(st.secrets["vanna_api_key"])
-vn.set_model('chinook')
+vn = VannaDefault(model='chinook', api_key=vanna.get_api_key('my-email@example.com'))
+
+#vn.set_api_key(st.secrets["vanna_api_key"])
+#vn.set_model('chinook')
+
 vn.connect_to_sqlite('https://vanna.ai/Chinook.sqlite')
 
 my_question = st.session_state.get("my_question", default=None)
@@ -18,3 +22,6 @@ else:
     fig = vn.get_plotly_figure(plotly_code=vn.generate_plotly_code(question=my_question, sql=sql, df=df), df=df)
     st.plotly_chart(fig, use_container_width=True)
     st.button("Ask another question", on_click=lambda: st.session_state.clear())
+
+#from vanna.flask import VannaFlaskApp
+#VannaFlaskApp(vn).run()

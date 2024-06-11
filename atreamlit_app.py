@@ -4,12 +4,14 @@ from vanna.remote import VannaDefault
 
 vn = VannaDefault(model='chinook', api_key=vn.get_api_key('alvaroabeck@gmail.com'))
 
-#vn.set_api_key(st.secrets["vanna_api_key"])
-#vn.set_model('chinook')
-
 vn.connect_to_sqlite('https://vanna.ai/Chinook.sqlite')
+from vanna.flask import VannaFlaskApp
+VannaFlaskApp(vn).run()
 
-'''my_question = st.session_state.get("my_question", default=None)
+'''
+vn.set_api_key(st.secrets["vanna_api_key"])
+vn.set_model('chinook')
+my_question = st.session_state.get("my_question", default=None)
 if my_question is None:
     st.image("chinook-schema.png", use_column_width=True)
     my_question = st.text_input("Ask me a question that I can turn into SQL", key="my_question")
@@ -23,5 +25,23 @@ else:
     st.plotly_chart(fig, use_container_width=True)
     st.button("Ask another question", on_click=lambda: st.session_state.clear())'''
 
+
+
+'''
+# Modelo básico para testes.
+from vanna.remote import VannaDefault
+vn = VannaDefault(model='chinook', api_key='a020d36d58a541dbbef6dd8ce47e57f1')
+vn.connect_to_sqlite('https://vanna.ai/Chinook.sqlite')
+vn.ask('What are the top 10 artists by sales?')
+
 from vanna.flask import VannaFlaskApp
-VannaFlaskApp(vn).run()
+VannaFlaskApp(vn).run()'''
+
+'''
+# usando um modelo meu.
+from vanna.remote import VannaDefault
+vn = VannaDefault(model='beck', api_key='a020d36d58a541dbbef6dd8ce47e57f1')
+vn.connect_to_...() # Connect to your database here
+
+from vanna.flask import VannaFlaskApp
+VannaFlaskApp(vn).run()'''

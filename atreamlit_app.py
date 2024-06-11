@@ -2,12 +2,14 @@ import vanna as vn
 import streamlit as st
 from vanna.remote import VannaDefault
 
-vn = VannaDefault(model='chinook', api_key=vn.get_api_key('alvaroabeck@gmail.com'))
+#vn = VannaDefault(model='chinook', api_key=vn.get_api_key('alvaroabeck@gmail.com'))
 
+vn = VannaDefault(model='chinook', api_key='a020d36d58a541dbbef6dd8ce47e57f1')
 vn.connect_to_sqlite('https://vanna.ai/Chinook.sqlite')
+vn.ask('What are the top 10 artists by sales?')
+
 from vanna.flask import VannaFlaskApp
 VannaFlaskApp(vn).run()
-
 '''
 vn.set_api_key(st.secrets["vanna_api_key"])
 vn.set_model('chinook')

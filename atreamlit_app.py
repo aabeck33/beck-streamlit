@@ -2,7 +2,7 @@ import vanna as vn
 import streamlit as st
 from vanna.remote import VannaDefault
 
-vn = VannaDefault(model='chinook', api_key=vanna.get_api_key('my-email@example.com'))
+vn = VannaDefault(model='chinook', api_key=vn.get_api_key('alvaroabeck@gmail.com'))
 
 #vn.set_api_key(st.secrets["vanna_api_key"])
 #vn.set_model('chinook')
